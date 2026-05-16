@@ -52,14 +52,10 @@ body {
   flex-wrap: nowrap;
 }
 
-.nav-logo .logo-text {
-  font-family: var(--font-heading);
-  font-size: 1.35rem;
-  color: var(--green-dark);
-  text-decoration: none;
-  white-space: nowrap;
-  letter-spacing: 0.03em;
-  margin-right: 0.4rem;
+.nav-logo-img {
+  height: 48px;
+  width: auto;
+  display: block;
 }
 
 .nav-links {
@@ -76,6 +72,7 @@ body {
   color: var(--text-dark);
   text-decoration: none;
   border-radius: 4px;
+  border: 1px solid var(--green-dark);
   font-family: var(--font-body);
   font-size: 0.87rem;
   font-weight: 500;
@@ -84,7 +81,7 @@ body {
 }
 
 .nav-btn:hover {
-  filter: brightness(0.9);
+  filter: brightness(0.93);
 }
 
 .nav-btn--active {
@@ -97,11 +94,22 @@ body {
   width: 36px;
   height: 36px;
   border-radius: 50%;
+  border-color: var(--green-dark);
   padding: 0;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   font-size: 0.95rem;
+  color: var(--green-dark);
+}
+
+/* Dropdown arrow outside the button */
+.dropdown-arrow {
+  font-size: 0.75rem;
+  color: var(--green-dark);
+  margin-left: 2px;
+  line-height: 1;
+  user-select: none;
 }
 
 /* Dropdown */
