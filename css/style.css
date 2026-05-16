@@ -1,0 +1,485 @@
+/* =========================================================
+   Variables & Reset
+   ========================================================= */
+:root {
+  --green-dark:   #458034;
+  --green-light:  #cbe3b6;
+  --white:        #ffffff;
+  --text-dark:    #1a1a1a;
+  --font-heading: 'Playfair Display', Georgia, serif;
+  --font-body:    'Lato', Arial, sans-serif;
+  --nav-height:   72px;
+  --transition:   0.25s ease;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--text-dark);
+  background-image: url('../data/nail-salon.jpg');
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+}
+
+/* =========================================================
+   Navigation
+   ========================================================= */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: var(--nav-height);
+  background: var(--green-dark);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1.5rem;
+  z-index: 1000;
+}
+
+.nav-logo .logo-text {
+  font-family: var(--font-heading);
+  font-size: 1.4rem;
+  color: var(--white);
+  text-decoration: none;
+  white-space: nowrap;
+  letter-spacing: 0.03em;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  gap: 0.4rem;
+}
+
+.nav-btn {
+  display: inline-block;
+  padding: 0.4rem 0.9rem;
+  background: var(--green-light);
+  color: var(--text-dark);
+  text-decoration: none;
+  border-radius: 4px;
+  font-family: var(--font-body);
+  font-size: 0.88rem;
+  font-weight: 500;
+  white-space: nowrap;
+  transition: filter var(--transition);
+}
+
+.nav-btn:hover {
+  filter: brightness(0.9);
+}
+
+.nav-btn--active {
+  background: var(--green-dark);
+  color: var(--white);
+  border: 2px solid var(--green-light);
+}
+
+.nav-btn--icon {
+  padding: 0.4rem 0.75rem;
+  font-size: 1rem;
+  line-height: 1;
+}
+
+/* Dropdown */
+.nav-dropdown {
+  position: relative;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  background: var(--white);
+  border: 1px solid var(--green-light);
+  border-radius: 4px;
+  list-style: none;
+  min-width: 160px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-6px);
+  transition: opacity var(--transition), transform var(--transition), visibility var(--transition);
+  z-index: 100;
+}
+
+.nav-dropdown:hover .dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.dropdown-menu li a {
+  display: block;
+  padding: 0.6rem 1rem;
+  color: var(--text-dark);
+  text-decoration: none;
+  font-size: 0.88rem;
+  transition: background var(--transition);
+}
+
+.dropdown-menu li a:hover {
+  background: var(--green-light);
+}
+
+/* Hamburger — hidden on desktop */
+.nav-hamburger {
+  display: none;
+  background: none;
+  border: 2px solid var(--green-light);
+  color: var(--white);
+  font-size: 1.4rem;
+  cursor: pointer;
+  padding: 0.25rem 0.55rem;
+  border-radius: 4px;
+  line-height: 1;
+}
+
+/* =========================================================
+   Rectangle Accent
+   ========================================================= */
+.rect-accent {
+  position: absolute;
+  top: 14px;
+  left: -14px;
+  right: -14px;
+  bottom: -14px;
+  border: 3px solid var(--green-dark);
+  background: transparent;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* =========================================================
+   Hero Section
+   ========================================================= */
+.hero {
+  position: relative;
+  height: 100vh;
+  min-height: 600px;
+  padding-top: var(--nav-height);
+  background-image: url('../data/nail-salon.jpg');
+  background-size: cover;
+  background-position: center top;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 8vw;
+  padding-left: 8vw;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.38);
+  z-index: 0;
+}
+
+.hero__content {
+  position: relative;
+  z-index: 1;
+  max-width: 480px;
+  background: rgba(255, 255, 255, 0.92);
+  padding: 3rem 3rem 3rem 3rem;
+  margin-left: 14px; /* room for rect-accent offset */
+}
+
+.hero__content h1 {
+  font-family: var(--font-heading);
+  font-size: clamp(1.8rem, 3.5vw, 3rem);
+  color: var(--green-dark);
+  line-height: 1.2;
+  margin-bottom: 1rem;
+}
+
+.hero__content h1 em {
+  font-style: italic;
+  display: block;
+}
+
+.hero__content p {
+  font-size: 1.05rem;
+  line-height: 1.75;
+  margin-bottom: 1.75rem;
+  color: #3a3a3a;
+}
+
+.cta-btn {
+  display: inline-block;
+  padding: 0.8rem 2.2rem;
+  background: var(--green-dark);
+  color: var(--white);
+  text-decoration: none;
+  border-radius: 4px;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 0.95rem;
+  letter-spacing: 0.04em;
+  transition: background var(--transition);
+  position: relative;
+  z-index: 1;
+}
+
+.cta-btn:hover {
+  background: #336025;
+}
+
+/* =========================================================
+   Services Section
+   ========================================================= */
+.services {
+  display: flex;
+  min-height: 80vh;
+}
+
+.services__half {
+  flex: 1;
+  position: relative;
+  background-image: url('../data/nail-salon.jpg');
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5rem 3rem;
+}
+
+.services__half--face {
+  background-position: left center;
+}
+
+.services__half--face::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(203, 227, 182, 0.52);
+  z-index: 0;
+}
+
+.services__half--body {
+  background-position: right center;
+}
+
+.services__half--body::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.50);
+  z-index: 0;
+}
+
+.services__inner {
+  position: relative;
+  z-index: 1;
+  background: rgba(255, 255, 255, 0.92);
+  padding: 2.5rem 2.5rem 2.5rem 3rem;
+  max-width: 400px;
+  width: 100%;
+  margin-left: 14px;
+}
+
+.services__inner h2 {
+  font-family: var(--font-heading);
+  font-size: 1.75rem;
+  color: var(--green-dark);
+  margin-bottom: 1.5rem;
+  position: relative;
+  z-index: 1;
+}
+
+.services__inner ul {
+  list-style: none;
+  padding: 0;
+  position: relative;
+  z-index: 1;
+}
+
+.services__inner ul li {
+  padding: 0.45rem 0 0.45rem 1.6rem;
+  position: relative;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #2a2a2a;
+}
+
+.services__inner ul li::before {
+  content: '✦';
+  position: absolute;
+  left: 0;
+  color: var(--green-dark);
+  font-size: 0.65rem;
+  top: 0.62rem;
+}
+
+/* =========================================================
+   About Section
+   ========================================================= */
+.about {
+  position: relative;
+  min-height: 60vh;
+  background-image: url('../data/nail-salon.jpg');
+  background-size: cover;
+  background-position: center bottom;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-end;
+  padding: 6rem 8vw;
+}
+
+.about::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.40);
+  z-index: 0;
+}
+
+.about__content {
+  position: relative;
+  z-index: 1;
+  max-width: 500px;
+  background: rgba(255, 255, 255, 0.92);
+  padding: 3rem 3rem 3rem 3rem;
+  margin-left: 14px;
+}
+
+.about__content h2 {
+  font-family: var(--font-heading);
+  font-size: 2rem;
+  color: var(--green-dark);
+  margin-bottom: 1.25rem;
+  position: relative;
+  z-index: 1;
+}
+
+.about__content p {
+  font-size: 1rem;
+  line-height: 1.8;
+  color: #3a3a3a;
+  margin-bottom: 0.85rem;
+  position: relative;
+  z-index: 1;
+}
+
+.about__content p:last-child {
+  margin-bottom: 0;
+}
+
+/* =========================================================
+   Footer
+   ========================================================= */
+.footer {
+  background: var(--green-dark);
+  color: var(--white);
+  text-align: center;
+  padding: 1.5rem 2rem;
+  font-size: 0.85rem;
+  font-family: var(--font-body);
+}
+
+/* =========================================================
+   Responsive — Mobile
+   ========================================================= */
+@media (max-width: 900px) {
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+    position: absolute;
+    top: var(--nav-height);
+    left: 0;
+    width: 100%;
+    background: var(--green-dark);
+    padding: 1rem 1.5rem 1.5rem;
+    border-top: 2px solid var(--green-light);
+  }
+
+  .nav-links.open {
+    display: flex;
+  }
+
+  .nav-links li {
+    width: 100%;
+  }
+
+  .nav-btn {
+    display: block;
+    width: 100%;
+  }
+
+  .nav-btn--icon {
+    width: auto;
+    display: inline-block;
+  }
+
+  .nav-hamburger {
+    display: block;
+  }
+
+  .dropdown-menu {
+    position: static;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    box-shadow: none;
+    border: none;
+    background: rgba(255, 255, 255, 0.1);
+    padding-left: 1rem;
+    margin-top: 0.25rem;
+  }
+
+  .dropdown-menu li a {
+    color: var(--white);
+    font-size: 0.85rem;
+  }
+
+  .dropdown-menu li a:hover {
+    background: rgba(203, 227, 182, 0.2);
+  }
+
+  .hero {
+    justify-content: center;
+    padding: 2rem 1.5rem;
+    padding-top: var(--nav-height);
+  }
+
+  .hero__content {
+    max-width: 100%;
+  }
+
+  .services {
+    flex-direction: column;
+  }
+
+  .services__half {
+    min-height: 50vh;
+    padding: 4rem 1.5rem;
+  }
+
+  .services__inner {
+    max-width: 100%;
+  }
+
+  .about {
+    justify-content: center;
+    padding: 4rem 1.5rem;
+  }
+
+  .about__content {
+    max-width: 100%;
+  }
+}
