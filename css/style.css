@@ -4,6 +4,7 @@
 :root {
   --green-dark:   #458034;
   --green-light:  #cbe3b6;
+  --nav-bg:       #dde1e2;
   --white:        #ffffff;
   --text-dark:    #1a1a1a;
   --font-heading: 'Playfair Display', Georgia, serif;
@@ -40,21 +41,25 @@ body {
   left: 0;
   width: 100%;
   height: var(--nav-height);
-  background: var(--green-dark);
+  background: var(--nav-bg);
+  border-bottom: 3px solid var(--green-dark);
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
+  gap: 0.4rem;
   padding: 0 1.5rem;
   z-index: 1000;
+  flex-wrap: nowrap;
 }
 
 .nav-logo .logo-text {
   font-family: var(--font-heading);
-  font-size: 1.4rem;
-  color: var(--white);
+  font-size: 1.35rem;
+  color: var(--green-dark);
   text-decoration: none;
   white-space: nowrap;
   letter-spacing: 0.03em;
+  margin-right: 0.4rem;
 }
 
 .nav-links {
@@ -66,13 +71,13 @@ body {
 
 .nav-btn {
   display: inline-block;
-  padding: 0.4rem 0.9rem;
+  padding: 0.4rem 0.85rem;
   background: var(--green-light);
   color: var(--text-dark);
   text-decoration: none;
   border-radius: 4px;
   font-family: var(--font-body);
-  font-size: 0.88rem;
+  font-size: 0.87rem;
   font-weight: 500;
   white-space: nowrap;
   transition: filter var(--transition);
@@ -85,13 +90,18 @@ body {
 .nav-btn--active {
   background: var(--green-dark);
   color: var(--white);
-  border: 2px solid var(--green-light);
 }
 
+/* Circular social icon buttons */
 .nav-btn--icon {
-  padding: 0.4rem 0.75rem;
-  font-size: 1rem;
-  line-height: 1;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.95rem;
 }
 
 /* Dropdown */
@@ -105,10 +115,11 @@ body {
   left: 0;
   background: var(--white);
   border: 1px solid var(--green-light);
-  border-radius: 4px;
+  border-top: 3px solid var(--green-dark);
+  border-radius: 0 0 4px 4px;
   list-style: none;
-  min-width: 160px;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
+  min-width: 180px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
   opacity: 0;
   visibility: hidden;
   transform: translateY(-6px);
@@ -124,10 +135,10 @@ body {
 
 .dropdown-menu li a {
   display: block;
-  padding: 0.6rem 1rem;
+  padding: 0.65rem 1rem;
   color: var(--text-dark);
   text-decoration: none;
-  font-size: 0.88rem;
+  font-size: 0.87rem;
   transition: background var(--transition);
 }
 
@@ -139,28 +150,39 @@ body {
 .nav-hamburger {
   display: none;
   background: none;
-  border: 2px solid var(--green-light);
-  color: var(--white);
-  font-size: 1.4rem;
+  border: 2px solid var(--green-dark);
+  color: var(--green-dark);
+  font-size: 1.3rem;
   cursor: pointer;
-  padding: 0.25rem 0.55rem;
+  padding: 0.2rem 0.5rem;
   border-radius: 4px;
   line-height: 1;
 }
 
 /* =========================================================
-   Rectangle Accent
+   Rectangle Accent  (upper-right corner, behind the card)
    ========================================================= */
+.card-wrap {
+  position: relative;
+}
+
 .rect-accent {
   position: absolute;
-  top: 14px;
-  left: -14px;
-  right: -14px;
-  bottom: -14px;
-  border: 3px solid var(--green-dark);
-  background: transparent;
+  width: 55%;
+  height: 48%;
+  top: -16px;
+  right: -16px;
+  background: var(--green-dark);
   z-index: 0;
   pointer-events: none;
+}
+
+/* Content cards always above the accent */
+.hero__content,
+.services__inner,
+.about__content {
+  position: relative;
+  z-index: 1;
 }
 
 /* =========================================================
@@ -185,22 +207,25 @@ body {
   content: '';
   position: absolute;
   inset: 0;
-  background: rgba(255, 255, 255, 0.38);
+  background: rgba(255, 255, 255, 0.35);
   z-index: 0;
 }
 
-.hero__content {
-  position: relative;
+.hero .card-wrap {
   z-index: 1;
   max-width: 480px;
-  background: rgba(255, 255, 255, 0.92);
-  padding: 3rem 3rem 3rem 3rem;
-  margin-left: 14px; /* room for rect-accent offset */
+  width: 100%;
+  margin-left: 16px;
+}
+
+.hero__content {
+  background: rgba(255, 255, 255, 0.93);
+  padding: 3rem;
 }
 
 .hero__content h1 {
   font-family: var(--font-heading);
-  font-size: clamp(1.8rem, 3.5vw, 3rem);
+  font-size: clamp(1.8rem, 3.2vw, 3rem);
   color: var(--green-dark);
   line-height: 1.2;
   margin-bottom: 1rem;
@@ -230,8 +255,6 @@ body {
   font-size: 0.95rem;
   letter-spacing: 0.04em;
   transition: background var(--transition);
-  position: relative;
-  z-index: 1;
 }
 
 .cta-btn:hover {
@@ -265,7 +288,7 @@ body {
   content: '';
   position: absolute;
   inset: 0;
-  background: rgba(203, 227, 182, 0.52);
+  background: rgba(203, 227, 182, 0.50);
   z-index: 0;
 }
 
@@ -277,18 +300,21 @@ body {
   content: '';
   position: absolute;
   inset: 0;
-  background: rgba(255, 255, 255, 0.50);
+  background: rgba(255, 255, 255, 0.48);
   z-index: 0;
 }
 
-.services__inner {
+.services__half .card-wrap {
   position: relative;
   z-index: 1;
-  background: rgba(255, 255, 255, 0.92);
-  padding: 2.5rem 2.5rem 2.5rem 3rem;
   max-width: 400px;
   width: 100%;
-  margin-left: 14px;
+  margin-left: 16px;
+}
+
+.services__inner {
+  background: rgba(255, 255, 255, 0.93);
+  padding: 2.5rem 2.5rem 2.5rem 2.5rem;
 }
 
 .services__inner h2 {
@@ -296,15 +322,11 @@ body {
   font-size: 1.75rem;
   color: var(--green-dark);
   margin-bottom: 1.5rem;
-  position: relative;
-  z-index: 1;
 }
 
 .services__inner ul {
   list-style: none;
   padding: 0;
-  position: relative;
-  z-index: 1;
 }
 
 .services__inner ul li {
@@ -343,17 +365,21 @@ body {
   content: '';
   position: absolute;
   inset: 0;
-  background: rgba(255, 255, 255, 0.40);
+  background: rgba(255, 255, 255, 0.38);
   z-index: 0;
 }
 
-.about__content {
+.about .card-wrap {
   position: relative;
   z-index: 1;
   max-width: 500px;
-  background: rgba(255, 255, 255, 0.92);
-  padding: 3rem 3rem 3rem 3rem;
-  margin-left: 14px;
+  width: 100%;
+  margin-left: 16px;
+}
+
+.about__content {
+  background: rgba(255, 255, 255, 0.93);
+  padding: 3rem;
 }
 
 .about__content h2 {
@@ -361,8 +387,6 @@ body {
   font-size: 2rem;
   color: var(--green-dark);
   margin-bottom: 1.25rem;
-  position: relative;
-  z-index: 1;
 }
 
 .about__content p {
@@ -370,8 +394,6 @@ body {
   line-height: 1.8;
   color: #3a3a3a;
   margin-bottom: 0.85rem;
-  position: relative;
-  z-index: 1;
 }
 
 .about__content p:last-child {
@@ -379,21 +401,199 @@ body {
 }
 
 /* =========================================================
-   Footer
+   Inner Pages — Shared
    ========================================================= */
-.footer {
+.page-hero {
+  position: relative;
+  height: 38vh;
+  min-height: 260px;
+  padding-top: var(--nav-height);
+  background-image: url('../data/nail-salon.jpg');
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.page-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.45);
+  z-index: 0;
+}
+
+.page-hero h1 {
+  position: relative;
+  z-index: 1;
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  color: var(--green-dark);
+  text-align: center;
+}
+
+.page-section {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 5rem 2rem 6rem;
+}
+
+/* Card used on inner pages */
+.content-card {
+  background: rgba(255, 255, 255, 0.93);
+  padding: 3rem;
+  margin-bottom: 2.5rem;
+}
+
+.content-card h2 {
+  font-family: var(--font-heading);
+  font-size: 1.65rem;
+  color: var(--green-dark);
+  margin-bottom: 1.25rem;
+}
+
+.content-card p {
+  font-size: 1rem;
+  line-height: 1.8;
+  color: #3a3a3a;
+  margin-bottom: 0.75rem;
+}
+
+/* Price table */
+.price-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 0.5rem;
+}
+
+.price-table th,
+.price-table td {
+  text-align: left;
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid #e0e0e0;
+  font-size: 0.97rem;
+}
+
+.price-table th {
+  font-family: var(--font-heading);
+  color: var(--green-dark);
+  font-size: 1.05rem;
+  border-bottom: 2px solid var(--green-dark);
+  background: rgba(203, 227, 182, 0.25);
+}
+
+.price-table td:last-child {
+  text-align: right;
+  font-weight: 700;
+  color: var(--green-dark);
+}
+
+.price-table tr:hover td {
+  background: rgba(203, 227, 182, 0.12);
+}
+
+/* Booking & contact form */
+.form-group {
+  margin-bottom: 1.25rem;
+}
+
+.form-group label {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: 700;
+  margin-bottom: 0.4rem;
+  color: var(--text-dark);
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 0.7rem 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-family: var(--font-body);
+  font-size: 0.97rem;
+  color: var(--text-dark);
+  background: var(--white);
+  transition: border-color var(--transition);
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--green-dark);
+}
+
+.form-group textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.submit-btn {
+  display: inline-block;
+  padding: 0.85rem 2.5rem;
   background: var(--green-dark);
   color: var(--white);
-  text-align: center;
-  padding: 1.5rem 2rem;
-  font-size: 0.85rem;
+  border: none;
+  border-radius: 4px;
   font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  letter-spacing: 0.04em;
+  transition: background var(--transition);
+}
+
+.submit-btn:hover {
+  background: #336025;
+}
+
+/* Contact info blocks */
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  align-items: start;
+}
+
+.contact-info p {
+  margin-bottom: 0.6rem;
+  font-size: 0.97rem;
+  color: #3a3a3a;
+}
+
+.contact-info strong {
+  color: var(--green-dark);
+  display: block;
+  margin-top: 1rem;
+  margin-bottom: 0.2rem;
+  font-size: 0.88rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.contact-info strong:first-child {
+  margin-top: 0;
 }
 
 /* =========================================================
    Responsive — Mobile
    ========================================================= */
 @media (max-width: 900px) {
+  .navbar {
+    justify-content: space-between;
+    flex-wrap: nowrap;
+  }
+
   .nav-links {
     display: none;
     flex-direction: column;
@@ -403,9 +603,9 @@ body {
     top: var(--nav-height);
     left: 0;
     width: 100%;
-    background: var(--green-dark);
+    background: var(--nav-bg);
+    border-bottom: 3px solid var(--green-dark);
     padding: 1rem 1.5rem 1.5rem;
-    border-top: 2px solid var(--green-light);
   }
 
   .nav-links.open {
@@ -419,11 +619,12 @@ body {
   .nav-btn {
     display: block;
     width: 100%;
+    text-align: center;
   }
 
   .nav-btn--icon {
-    width: auto;
-    display: inline-block;
+    width: 36px;
+    display: inline-flex;
   }
 
   .nav-hamburger {
@@ -437,18 +638,17 @@ body {
     transform: none;
     box-shadow: none;
     border: none;
-    background: rgba(255, 255, 255, 0.1);
-    padding-left: 1rem;
-    margin-top: 0.25rem;
+    border-left: 3px solid var(--green-light);
+    background: rgba(203, 227, 182, 0.15);
+    padding-left: 0.75rem;
+    margin-top: 0.3rem;
+    border-radius: 0;
+    border-top: none;
   }
 
   .dropdown-menu li a {
-    color: var(--white);
     font-size: 0.85rem;
-  }
-
-  .dropdown-menu li a:hover {
-    background: rgba(203, 227, 182, 0.2);
+    color: var(--text-dark);
   }
 
   .hero {
@@ -457,8 +657,14 @@ body {
     padding-top: var(--nav-height);
   }
 
-  .hero__content {
+  .hero .card-wrap {
     max-width: 100%;
+    margin-left: 0;
+  }
+
+  .rect-accent {
+    top: -10px;
+    right: -10px;
   }
 
   .services {
@@ -470,8 +676,9 @@ body {
     padding: 4rem 1.5rem;
   }
 
-  .services__inner {
+  .services__half .card-wrap {
     max-width: 100%;
+    margin-left: 0;
   }
 
   .about {
@@ -479,7 +686,16 @@ body {
     padding: 4rem 1.5rem;
   }
 
-  .about__content {
+  .about .card-wrap {
     max-width: 100%;
+    margin-left: 0;
+  }
+
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
   }
 }
