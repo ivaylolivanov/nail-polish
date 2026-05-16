@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Услуги — Нейл Полиш</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Lato:wght@300;400;700&display=swap" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <nav class="navbar">
+    <a href="index.html" class="nav-logo">
+      <span class="logo-text">Нейл Полиш</span>
+    </a>
+
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html" class="nav-btn">Начало</a></li>
+
+      <li class="nav-dropdown">
+        <a href="services.html" class="nav-btn nav-btn--active">Услуги ▾</a>
+        <ul class="dropdown-menu">
+          <li><a href="#face">Грижа за лице</a></li>
+          <li><a href="#body">Грижа за тяло</a></li>
+        </ul>
+      </li>
+
+      <li><a href="pricelist.html" class="nav-btn">Ценоразпис</a></li>
+      <li><a href="booking.html" class="nav-btn">Резервирай онлайн</a></li>
+      <li><a href="contacts.html" class="nav-btn">Контакти</a></li>
+
+      <li>
+        <a href="https://www.facebook.com" target="_blank" rel="noopener"
+           class="nav-btn nav-btn--icon" aria-label="Facebook">
+          <i class="fab fa-facebook-f"></i>
+        </a>
+      </li>
+      <li>
+        <a href="https://www.instagram.com" target="_blank" rel="noopener"
+           class="nav-btn nav-btn--icon" aria-label="Instagram">
+          <i class="fab fa-instagram"></i>
+        </a>
+      </li>
+      <li>
+        <a href="https://wa.me/" target="_blank" rel="noopener"
+           class="nav-btn nav-btn--icon" aria-label="WhatsApp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </li>
+    </ul>
+
+    <button class="nav-hamburger" id="hamburger" aria-label="Меню">&#9776;</button>
+  </nav>
+
+  <section class="page-hero">
+    <h1>Нашите услуги</h1>
+  </section>
+
+  <section class="services" id="face">
+
+    <div class="services__half services__half--face">
+      <div class="card-wrap">
+        <div class="rect-accent"></div>
+        <div class="services__inner">
+          <h2>Грижа за лице</h2>
+          <ul>
+            <li>Почистване на лице</li>
+            <li>Дълбоко почистване с пара</li>
+            <li>Анти-ейдж терапия</li>
+            <li>Хидратираща маска</li>
+            <li>Пилинг</li>
+            <li>Микродермабразио</li>
+            <li>Мезотерапия</li>
+            <li>RF лифтинг</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="services__half services__half--body" id="body">
+      <div class="card-wrap">
+        <div class="rect-accent"></div>
+        <div class="services__inner">
+          <h2>Грижа за тяло</h2>
+          <ul>
+            <li>Релаксиращ масаж</li>
+            <li>Антицелулитна терапия</li>
+            <li>Ваксиране</li>
+            <li>Лазерна епилация</li>
+            <li>Обвивания с водорасли</li>
+            <li>Лимфен дренаж</li>
+            <li>Кавитация</li>
+            <li>Прессотерапия</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <script>
+    const hamburger = document.getElementById('hamburger');
+    const navLinks  = document.getElementById('navLinks');
+    hamburger.addEventListener('click', () => navLinks.classList.toggle('open'));
+  </script>
+
+</body>
+</html>
