@@ -26,7 +26,7 @@ html {
 body {
   font-family: var(--font-body);
   color: var(--text-dark);
-  background-image: url('../data/nail-salon.jpg');
+  background-image: url('../data/green-exotic-leaves-close-up.jpg');
   background-size: cover;
   background-attachment: fixed;
   background-position: center;
@@ -202,7 +202,7 @@ body {
   height: 100vh;
   min-height: 600px;
   padding-top: var(--nav-height);
-  background-image: url('../data/nail-salon.jpg');
+  background-image: url('../data/central-thing.jpg');
   background-size: cover;
   background-position: center top;
   display: flex;
@@ -278,47 +278,18 @@ body {
   min-height: 80vh;
 }
 
-.services__half {
+.services-half-face,
+.services-half-body {
   flex: 1;
-  position: relative;
-  background-image: url('../data/nail-salon.jpg');
-  background-size: cover;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 5rem 3rem;
+  overflow: hidden;
 }
 
-.services__half--face {
-  background-position: left center;
-}
-
-.services__half--face::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: rgba(203, 227, 182, 0.50);
-  z-index: 0;
-}
-
-.services__half--body {
-  background-position: right center;
-}
-
-.services__half--body::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: rgba(255, 255, 255, 0.48);
-  z-index: 0;
-}
-
-.services__half .card-wrap {
-  position: relative;
-  z-index: 1;
-  max-width: 400px;
+.services-half-face img,
+.services-half-body img {
+  display: block;
   width: 100%;
-  margin-left: 16px;
+  height: 100%;
+  object-fit: cover;
 }
 
 .services__inner {
@@ -361,7 +332,7 @@ body {
 .about {
   position: relative;
   min-height: 60vh;
-  background-image: url('../data/nail-salon.jpg');
+  background-image: url('../data/lakove.jpg');
   background-size: cover;
   background-position: center bottom;
   display: flex;
@@ -417,7 +388,7 @@ body {
   height: 38vh;
   min-height: 260px;
   padding-top: var(--nav-height);
-  background-image: url('../data/nail-salon.jpg');
+  background-image: url('../data/green-exotic-leaves-close-up.jpg');
   background-size: cover;
   background-position: center;
   display: flex;
@@ -594,6 +565,44 @@ body {
   margin-top: 0;
 }
 
+/* Booking feedback panel */
+.booking-feedback {
+  text-align: center;
+  padding: 1.5rem 0;
+}
+
+.booking-feedback h3 {
+  font-family: var(--font-heading);
+  font-size: 1.6rem;
+  color: var(--green-dark);
+  margin-bottom: 0.75rem;
+}
+
+.booking-feedback p {
+  font-size: 1rem;
+  line-height: 1.75;
+  color: #3a3a3a;
+  margin-bottom: 0.4rem;
+}
+
+.booking-feedback__fallback {
+  margin-top: 1.5rem;
+  padding: 1.25rem 1.5rem;
+  border-left: 3px solid var(--green-dark);
+  background: rgba(203, 227, 182, 0.2);
+  text-align: left;
+}
+
+.booking-feedback__fallback a {
+  color: var(--green-dark);
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.booking-feedback__fallback a:hover {
+  text-decoration: underline;
+}
+
 /* =========================================================
    Responsive — Mobile
    ========================================================= */
@@ -680,12 +689,12 @@ body {
     flex-direction: column;
   }
 
-  .services__half {
+  .services-half {
     min-height: 50vh;
     padding: 4rem 1.5rem;
   }
 
-  .services__half .card-wrap {
+  .services-half .card-wrap {
     max-width: 100%;
     margin-left: 0;
   }

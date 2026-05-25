@@ -21,12 +21,11 @@
 
   <div class="page-section">
     <div class="card-wrap">
-      <div class="rect-accent"></div>
       <div class="content-card">
         <h2>Запазете своя час</h2>
         <p>Попълнете формата по-долу и ние ще се свържем с вас за потвърждение в рамките на 24 часа.</p>
 
-        <form action="#" method="post" style="margin-top: 1.5rem;">
+        <form id="booking-form" style="margin-top: 1.5rem;" novalidate>
           <div class="form-row">
             <div class="form-group">
               <label for="name">Три имена</label>
@@ -47,25 +46,19 @@
             <label for="service">Услуга</label>
             <select id="service" name="service" required>
               <option value="" disabled selected>Изберете услуга</option>
-              <optgroup label="Грижа за лице">
-                <option>Почистване на лице</option>
-                <option>Дълбоко почистване с пара</option>
-                <option>Анти-ейдж терапия</option>
-                <option>Хидратираща маска</option>
-                <option>Пилинг</option>
-                <option>Микродермабразио</option>
-                <option>Мезотерапия</option>
-                <option>RF лифтинг</option>
+              <optgroup label="Процедури за лице">
+                <option>Дермобразио</option>
+                <option>Биолифтинг</option>
+                <option>Кислородна терапия</option>
+                <option>Безиглено поставяне на хиалурон</option>
+                <option>Мезо перманентен фон дьо тен</option>
               </optgroup>
-              <optgroup label="Грижа за тяло">
-                <option>Релаксиращ масаж</option>
-                <option>Антицелулитна терапия</option>
-                <option>Ваксиране</option>
-                <option>Лазерна епилация</option>
-                <option>Обвивания с водорасли</option>
-                <option>Лимфен дренаж</option>
+              <optgroup label="Процедури за тяло">
+                <option>Целутрон</option>
                 <option>Кавитация</option>
-                <option>Прессотерапия</option>
+                <option>Липолазер</option>
+                <option>Масаж</option>
+                <option>Лазерна епилация</option>
               </optgroup>
             </select>
           </div>
@@ -88,9 +81,22 @@
 
           <button type="submit" class="submit-btn">Изпрати заявката</button>
         </form>
+
+        <div id="booking-feedback" class="booking-feedback" hidden>
+          <h3>Благодарим ви!</h3>
+          <p>Опитахме се да отворим вашия имейл клиент с попълнена заявка за резервация.</p>
+          <p>Ако нищо не се е случило, вашето устройство вероятно <strong>няма настроен имейл клиент</strong>.</p>
+          <div class="booking-feedback__fallback">
+            <p>Свържете се с нас директно:</p>
+            <p><strong>Телефон:</strong> <a href="tel:+359888888888">+359 88 888 8888</a></p>
+            <p><strong>Имейл:</strong> <a href="mailto:info@elena.bg">info@elena.bg</a></p>
+          </div>
+        </div>
+
       </div>
     </div>
   </div>
+  <script src="js/booking.js"></script>
 
 
 </body>
